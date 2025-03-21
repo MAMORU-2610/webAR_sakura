@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <!-- .mind ファイルは3つのマーカー情報が含まれているものを指定 -->
+    <a-scene mindar-image="imageTargetSrc: target.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <!-- 各モデルのアセットを定義 -->
+        <a-asset-item id="sakura_v1" src="sakura_v1.glb"></a-asset-item>
+        <a-asset-item id="sakura_v2" src="sakura_v2.glb"></a-asset-item>
+        <a-asset-item id="sakura_v3" src="sakura_v3.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- マーカー0に反応：sakura_v1.glb -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model rotation="90 0 0" position="0 0 0" scale="0.2 0.2 0.2" src="#sakura_v1"></a-gltf-model>
+        <a-gltf-model rotation="90 0 0" position="1 0 0" scale="0.2 0.2 0.2" src="#sakura_v1"></a-gltf-model>
+      </a-entity>
+
+      <!-- マーカー1に反応：sakura_v2.glb -->
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-gltf-model rotation="90 0 0" position="0 0 0" scale="0.2 0.2 0.2" src="#sakura_v2"></a-gltf-model>
+      </a-entity>
+
+      <!-- マーカー2に反応：sakura_v3.glb -->
+      <a-entity mindar-image-target="targetIndex: 2">
+        <a-gltf-model rotation="90 0 0" position="0 0 0" scale="0.2 0.2 0.2" src="#sakura_v3"></a-gltf-model>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
